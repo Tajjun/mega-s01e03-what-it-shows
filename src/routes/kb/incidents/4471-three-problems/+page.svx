@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 · three problems, not one'
+title: '#4471 · two problems, not one'
 owner: support desk
 status: draft
 reviewed: 2026-10-31
@@ -14,33 +14,27 @@ signature: v1.eyJzdWIiOiIxMzAzIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYX
 </script>
 
 The [#4471 page](/kb/incidents/4471) says one bug, one fix queued. The reports say otherwise.
-Read one by one, the ones merged into #4471 fall into three problems. One fix covers the
+Read one by one, the ones merged into #4471 fall into two problems. One fix covers the
 first only.
 
 <ProblemSplit ticket={4471} />
 
 <Callout kind="warn">
-The parser fix does not close #4471. It closes the largest part of it.
+The parser fix does not close #4471. It closes most of it.
 </Callout>
 
 ## 1 · The parser reads dates month first
 
 Tenants that write the day first see their dates flip: 7 April comes out as 4 July. This is
-what #4471 was filed for, and the queued fix is for this.
+what #4471 was filed for, and the queued fix is for this. A few of these reports describe a
+booking one day off rather than a swap. The desk read them as a one-day move and files them by
+tenant, so they are counted here and footnoted in the table.
 
 ## 2 · The booking-v3 form hints the wrong order
 
 Three day-first tenants run `booking-v3`, and its date field prints a `MM/DD/YYYY` hint. Their
 people type what the hint says, and the form reads it their way. Only the form channel is
 affected, and the parser fix does not reach it. It needs its own ticket and its own fix.
-
-## 3 · One day off, with no swap
-
-Five reports describe a booking that lands exactly one day away from where it should be:
-a different weekday, a reminder that depends on where the client sits, an invite that
-arrived before the booking. None of them shows a day and month swapped. The desk already read
-them as a one-day move (`desk-notes.json`); the old page filed them under the parser because
-of their tenant. The cause is not known yet. Time zones are a guess, not a finding.
 
 ## What to do with this page
 
