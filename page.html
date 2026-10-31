@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>#4471 · three problems, not one · support kb</title>
+<title>#4471 · two problems, not one · support kb</title>
 <style>
 :root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#6b6a66;--line:#e3e0d8;--accent:#2f6f5e;--warn:#b4501f;--warn-bg:#fbeee6;--note-bg:#eef5f2;--mono:ui-monospace,'Cascadia Code',Menlo,monospace}
 @media (prefers-color-scheme:dark){:root{--bg:#171716;--fg:#ecebe6;--muted:#9c9a93;--line:#34332f;--accent:#6fbfa6;--warn:#f0905d;--warn-bg:#3a2418;--note-bg:#1d2c27}}
@@ -20,25 +20,22 @@ aside.warn{border-color:var(--warn);background:var(--warn-bg)}
 footer{margin-top:3rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:1rem}
 </style></head><body><div class="kb">
 <header><a class="crumb" href="#">support desk · kb</a>
-<h1>#4471 · three problems, not one</h1>
+<h1>#4471 · two problems, not one</h1>
 <p class="meta"><span>owner <b>support desk</b></span><span class="status draft">draft</span><span>reviewed 2026-10-31 · 0 days ago</span></p></header>
 <main>
-<p>The <a href="#">#4471 page</a> says one bug, one fix queued. The reports say otherwise. Read one by one, the ones merged into #4471 fall into three problems. One fix covers the first only.</p>
-<p class="sum"><strong>412</strong> reports merged into #4471 · <strong>3</strong> problems</p>
+<p>The <a href="#">#4471 page</a> says one bug, one fix queued. The reports say otherwise. Read one by one, the ones merged into #4471 fall into two problems. One fix covers the first only.</p>
+<p class="sum"><strong>412</strong> reports merged into #4471 · <strong>2</strong> problems</p>
 <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>intake tagged them</th></tr></thead><tbody>
-<tr><td><code>parser</code> · shared parser reads dates month first</td><td>374</td><td>11</td><td class="tags">parser ×351 · hint ×23</td></tr>
+<tr><td><code>parser</code> · shared parser reads dates month first</td><td>379</td><td>11</td><td class="tags">parser ×356 · hint ×23</td></tr>
 <tr><td><code>hint</code> · booking-v3 form hints MM/DD/YYYY to day-first tenants</td><td>33</td><td>3</td><td class="tags">hint ×18 · parser ×15</td></tr>
-<tr><td><code>one-day-move</code> · booking lands exactly one day off</td><td>5</td><td>5</td><td class="tags">parser ×5</td></tr>
 </tbody></table>
-<p class="note">one-day-move: R-41202, R-41209, R-41236, R-41344, R-41620</p>
+<p class="note">5 of the parser reports read as a one-day move; filed under <code>parser</code> by tenant.</p>
 <p class="note">Intake's tag disagrees with the problem for 38 reports.</p>
-<aside class="warn">The parser fix does not close #4471. It closes the largest part of it.</aside>
+<aside class="warn">The parser fix does not close #4471. It closes most of it.</aside>
 <h2>1 · The parser reads dates month first</h2>
-<p>Tenants that write the day first see their dates flip: 7 April comes out as 4 July. This is what #4471 was filed for, and the queued fix is for this.</p>
+<p>Tenants that write the day first see their dates flip: 7 April comes out as 4 July. This is what #4471 was filed for, and the queued fix is for this. A few of these reports describe a booking one day off rather than a swap. The desk read them as a one-day move and files them by tenant, so they are counted here and footnoted in the table.</p>
 <h2>2 · The booking-v3 form hints the wrong order</h2>
 <p>Three day-first tenants run <code>booking-v3</code>, and its date field prints a <code>MM/DD/YYYY</code> hint. Their people type what the hint says, and the form reads it their way. Only the form channel is affected, and the parser fix does not reach it. It needs its own ticket and its own fix.</p>
-<h2>3 · One day off, with no swap</h2>
-<p>Five reports describe a booking that lands exactly one day away from where it should be: a different weekday, a reminder that depends on where the client sits, an invite that arrived before the booking. None of them shows a day and month swapped. The desk already read them as a one-day move (<code>desk-notes.json</code>); the old page filed them under the parser because of their tenant. The cause is not known yet. Time zones are a guess, not a finding.</p>
 <h2>What to do with this page</h2>
 <ul><li>Do not treat intake's tag as the cause. It is a guess from the reporter's browser.</li><li>Give each problem its own ticket and count reports per problem, not per merge.</li></ul>
 <p class="stamp">desk ref <b>DR-P7K8-KH68</b></p>
